@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        header {
+            background-color: #007BFF;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            margin-top: 20px;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+        input[type="range"] {
+            width: 100%;
+        }
+        button[type="reset"], button[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        h3 {
+            margin-top: 20px;
+        }
+        textarea[name="result"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Text Summarizer</h1>
+    </header>
+    <div class="container">
+        <form action="{{url_for('Summarize')}}" method="post">
+            <textarea name="data" cols="30" rows="10" placeholder="Enter your text" required></textarea>
+            <input type="range" min="20" max="1000" name="MaxL" value="100">
+            <button type="reset">Clear</button>
+            <button type="submit">Summarize</button>
+        </form>
+        <h3>Summarized Text:</h3>
+        <textarea rows="10" cols="30" name="result" readonly>{{result}}</textarea>
+    </div>
+</body>
+</html>
